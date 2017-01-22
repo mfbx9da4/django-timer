@@ -75,7 +75,7 @@ class Timer(object):
 
     def __enter__(self):
         self.start = time.time()
-        self.max = self.start
+        self.max = float("-inf")
         self.laps = []
         self.lap_deltas = []
         self.delta = None
@@ -98,7 +98,7 @@ class Timer(object):
         return message + '%d laps' % len(self.laps)
 
     def prettySeconds(self, seconds):
-        return '%.03f secs' % seconds if seconds is not None else ''
+        return '%.3f secs' % seconds if seconds is not None else ''
 
     def logMessage(self):
         if self.message:
@@ -119,7 +119,7 @@ class Timer(object):
         now = time.time()
         self.laps.append(now)
         self.lap_deltas.append(now - last_lap)
-        self.max = max(self.laps[-1], self.max)
+        self.max = max(self.lap_deltas[-1], self.max)
 
     def __exit__(self, *args):
         self.end = time.time()
