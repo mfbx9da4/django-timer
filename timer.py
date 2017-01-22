@@ -15,7 +15,7 @@ except:
 log = logging.getLogger(__name__)
 
 
-class Timer(object):
+class timer(object):
     """
     Used for timing blocks of code.
 
