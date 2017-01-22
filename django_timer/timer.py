@@ -16,19 +16,38 @@ log = logging.getLogger(__name__)
 
 
 class Timer(object):
-    """
-    Used for timing blocks of code.
+    """Used for timing blocks of code.
 
-    Usage:
-        try:
-            with Timer() as t:
-                conn = httplib.HTTPConnection('example.com')
-                conn.request('GET', '/')
-        finally:
-            print 'Request took %.03f sec.' % t.delta
+    Args:
+        message (boolean): If true will log.info the message plus the delta in seconds
+        print_message (boolean): If true will print the `__str__` to std out
 
-    :param: message If set will log.info the message plus delta
-    :param: print_message If true will print the __str__ to std out
+    Examples:
+
+        # Access the timing stats
+        with Timer() as timer:
+            import time; time.sleep(1) # do something slow
+        print 'Sleep for 1 second took %.03f secs' % timer.delta
+
+        >> Sleep for 1 second took 1.003 secs
+
+        ...
+
+        # If you provide a message the timer outputs
+        # to Log file with INFO level
+        with Timer('sleep 1') as timer:
+            import time; time.sleep(1) # do something slow
+
+        >> [INFO] sleep 1 :: 1.003 secs
+
+        ...
+
+        # Print the message to STDOUT as well as log file with `print_message=True`
+        with Timer('sleep 1', print_message=True) as timer:
+            import time; time.sleep(1) # do something slow
+
+        >> sleep 1 :: 1.003 secs
+        >> [INFO] sleep 1 :: 1.003 secs
 
     """
     def __init__(self, message=None, print_message=False):
@@ -71,7 +90,7 @@ class Timer(object):
         return message + '%d laps' % len(self.laps)
 
     def prettySeconds(self, seconds):
-        return '%.2f secs' % seconds if seconds is not None else ''
+        return '%.03f secs' % seconds if seconds is not None else ''
 
     def logMessage(self):
         if self.message:
