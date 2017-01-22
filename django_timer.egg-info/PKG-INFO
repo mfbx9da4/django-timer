@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: django-timer
-Version: 0.8
+Version: 0.9
 Summary: Profile a code block with one line. Suitable for all python and django projects.
 Home-page: UNKNOWN
 Author: David Alberto Adler

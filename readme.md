@@ -46,8 +46,8 @@ You can also use the `lap()` method to measure iterations in a loop:
 ```python
 with Timer('my loop', print_message=True) as timer:
     for i in range(100):
-        timer.lap()
         import time; time.sleep(0.01) # do something slow
+        timer.lap()
 print "Total time {d:.02f} the number of iterations {n} average {avg} max {max}".format(d=timer.delta, n=len(timer.laps), avg=timer.average, max=timer.max)
 ```    
 
