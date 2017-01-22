@@ -6,3 +6,7 @@ Lightweight profiling timer for django projects can be installed [via pypi](http
 ## Build and Upload to Pip
 
     python setup.py sdist upload -r pypi
+
+## Run tests 
+
+    nosetests
