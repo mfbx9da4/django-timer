@@ -7,6 +7,12 @@ from unittest import TestCase
 
 @mock.patch('django_timer.log.info')
 class TimerTest(TestCase):
+    def test_caller(self, logger_mock):
+        with Timer() as timer:
+            # do something slow
+            pass
+        self.assertEqual(timer.caller, 'django_timer.test.test_caller:11 :: ')
+
     def test_delta(self, logger_mock):
         with mock.patch('time.time', side_effect=[0.0, 10.0]):
             with Timer() as timer:

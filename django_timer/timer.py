@@ -3,16 +3,17 @@ import time
 import functools
 import logging
 
+from utils import get_last_n_levels_of_path
+
 try:
     import settings
 except:
     # mock django settings with project path
     class settings(object):
-        @classmethod
-        def PROJ_PATH():
-            return ''
+        PROJ_PATH = ''
 
 log = logging.getLogger(__name__)
+CALLER_DEPTH = 2
 
 
 class Timer(object):
@@ -54,7 +55,14 @@ class Timer(object):
         self.message = message
         self.print_message = print_message
         try:
-            self.caller = inspect.stack()[1][1].split(settings.PROJ_PATH)[1] + ':' + inspect.stack()[1][3] + ' :: '
+            path = inspect.stack()[1][1]
+            folders = get_last_n_levels_of_path(path, CALLER_DEPTH)
+            path = '.'.join(folders)
+            method = inspect.stack()[1][3]
+            line = inspect.stack()[1][2]
+            self.caller = "{path}.{method}:{line} :: ".format(path=path,
+                                                              line=line,
+                                                              method=method)
         except Exception:
             self.caller = ''
 
@@ -120,4 +128,3 @@ class Timer(object):
             self.average = sum(self.lap_deltas) / len(self.laps)
         self.logMessage()
         self.printMessage()
-

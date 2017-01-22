@@ -10,3 +10,7 @@ Lightweight profiling timer for django projects can be installed [via pypi](http
 ## Run tests 
 
     nosetests 
+
+## Todo:
+- Set logging to info by default as an option in settings.py
+- config for showing path
