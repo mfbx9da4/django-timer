@@ -15,7 +15,7 @@ print 'Sleep for 1 second took %.03f secs' % timer.delta
 STDOUT: Sleep for 1 second took 1.003 secs
 ```
 
-If you provide a message the timer outputs to Log file with INFO level
+If you provide a message the timer will log the message via the logger with a log level of `INFO`
 
 ```python
 with Timer('sleep 1') as timer:

@@ -34,8 +34,8 @@ class Timer(object):
 
         ...
 
-        # If you provide a message the timer outputs
-        # to Log file with INFO level
+        # If you provide a message the timer will log
+        # the message via the logger with a log level of `INFO`
         with Timer('sleep 1') as timer:
             import time; time.sleep(1) # do something slow
 
