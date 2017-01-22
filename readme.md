@@ -11,9 +11,8 @@ with Timer() as timer:
     import time; time.sleep(1) # do something slow
 print 'Sleep for 1 second took %.03f secs' % timer.delta
 ```
-OUT
 ```
-Sleep for 1 second took 1.003 secs
+STDOUT: Sleep for 1 second took 1.003 secs
 ```
 
 If you provide a message the timer outputs to Log file with INFO level
@@ -22,9 +21,8 @@ If you provide a message the timer outputs to Log file with INFO level
 with Timer('sleep 1') as timer:
     import time; time.sleep(1) # do something slow
 ```    
-OUT    
 ```
-[INFO] sleep 1 :: 1.003 secs
+django.log: [INFO] sleep 1 :: 1.003 secs
 ```
 
 Print the message to STDOUT as well as log file with `print_message=True`
@@ -32,10 +30,9 @@ Print the message to STDOUT as well as log file with `print_message=True`
 with Timer('sleep 1', print_message=True) as timer:
     import time; time.sleep(1) # do something slow
 ```
-OUT    
 ```
-sleep 1 :: 1.003 secs
-[INFO] sleep 1 :: 1.003 secs
+STDOUT: sleep 1 :: 1.003 secs
+django.log: [INFO] sleep 1 :: 1.003 secs
 ```
 
 You can also use the timer as a decorator:
