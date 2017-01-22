@@ -1,6 +1,17 @@
-import settings
+import inspect
 import time
+import functools
 import logging
+
+try:
+    import settings
+except:
+    # mock django settings with project path
+    class settings(object):
+        @classmethod
+        def PROJ_PATH():
+            return ''
+
 log = logging.getLogger(__name__)
 
 
