@@ -9,4 +9,4 @@ Lightweight profiling timer for django projects can be installed [via pypi](http
 
 ## Run tests 
 
-    nosetests
+    nosetests 

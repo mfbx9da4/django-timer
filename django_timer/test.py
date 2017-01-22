@@ -3,7 +3,6 @@ import mock
 
 from django_timer import Timer
 from unittest import TestCase
-from unittest import skip
 
 
 @mock.patch('django_timer.log.info')
