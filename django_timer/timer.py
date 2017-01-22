@@ -10,7 +10,7 @@ try:
 except:
     # mock django settings with project path
     class settings(object):
-        PROJ_PATH = ''
+        BASE_DIR = ''
 
 log = logging.getLogger(__name__)
 CALLER_DEPTH = 2
