@@ -87,7 +87,7 @@ class Timer(object):
         if self.message:
             return self.caller + self.message + ' :: ' + self.deltaPretty()
         else:
-            return self.deltaPretty()
+            return self.caller + self.deltaPretty()
 
     def deltaPretty(self):
         return self.prettySeconds(self.delta)

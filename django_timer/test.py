@@ -9,14 +9,25 @@ from unittest import TestCase
 class TimerTest(TestCase):
     def test_caller(self, logger_mock):
         with Timer() as timer:
-            # do something slow
             pass
         self.assertEqual(timer.caller, 'django_timer.test.test_caller:11 :: ')
+
+    def test_no_message(self, logger_mock):
+        with Timer() as timer:
+            pass
+        parts = timer.__str__().split('::')
+        self.assertEqual(len(parts), 2)
+
+    def test_decorator(self, logger_mock):
+        @Timer('asdf')
+        def fn():
+            pass
+        fn()
+        self.assertEqual(logger_mock.call_count, 1)
 
     def test_delta(self, logger_mock):
         with mock.patch('time.time', side_effect=[0.0, 10.0]):
             with Timer() as timer:
-                # do something slow
                 pass
             self.assertEqual(timer.delta, 10.0)
 
