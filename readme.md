@@ -48,12 +48,16 @@ with Timer('my loop', print_message=True) as timer:
     for i in range(100):
         import time; time.sleep(0.01) # do something slow
         timer.lap()
-print "Total time {d:.02f} the number of iterations {n} average {avg} max {max}".format(d=timer.delta, n=len(timer.laps), avg=timer.average, max=timer.max)
+delta = timer.delta
+number_of_laps = len(timer.laps)
+average = timer.average
+slowest_lap = timer.max
+print "Total time {d:.02f} the number of iterations {n} average {avg} max {max}".format(d=delta, n=number_of_laps, avg=average, max=slowest_lap)
 ```    
 
 ```
 STDOUT: my loop :: 1.191 secs
-STDOUT: Total time 1.17 the number of iterations 100 average 0.0115374279022 max 0.0129508972168
+STDOUT: Total time 1.19 the number of iterations 100 average 0.0115374279022 max 0.0129508972168
 ```
 
 #For contributors
