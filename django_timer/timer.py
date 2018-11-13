@@ -28,7 +28,7 @@ class Timer(object):
         # Access the timing stats
         with Timer() as timer:
             import time; time.sleep(1) # do something slow
-        print 'Sleep for 1 second took %.03f secs' % timer.delta
+        print('Sleep for 1 second took %.03f secs' % timer.delta)
 
         >> Sleep for 1 second took 1.003 secs
 
@@ -106,7 +106,7 @@ class Timer(object):
 
     def printMessage(self):
         if self.print_message:
-            print self.__str__()
+            print(self.__str__())
 
     def lap(self):
         """

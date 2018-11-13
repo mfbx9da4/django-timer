@@ -1,5 +1,5 @@
 # Django Timer
-Lightweight profiling timer for django projects can be installed [via pypi](https://pypi.python.org/pypi?name=django-timer&version=0.1&:action=display). Compatible for all django and python projects.
+Lightweight profiling timer for django projects can be installed [via pypi](https://pypi.python.org/pypi?name=django-timer&version=0.1&:action=display). Compatible with all django and python projects. Compatible with python 2 and 3.
 
     pip install django-timer
 
@@ -9,7 +9,7 @@ Simplest usage
 ```python
 with Timer() as timer:
     import time; time.sleep(1) # do something slow
-print 'Sleep for 1 second took %.03f secs' % timer.delta
+print('Sleep for 1 second took %.03f secs' % timer.delta)
 ```
 ```
 STDOUT: Sleep for 1 second took 1.003 secs
@@ -52,7 +52,7 @@ delta = timer.delta
 number_of_laps = len(timer.laps)
 average = timer.average
 slowest_lap = timer.max
-print "Total time {d:.02f} the number of iterations {n} average {avg} max {max}".format(d=delta, n=number_of_laps, avg=average, max=slowest_lap)
+print("Total time {d:.02f} the number of iterations {n} average {avg} max {max}".format(d=delta, n=number_of_laps, avg=average, max=slowest_lap))
 ```
 
 ```
