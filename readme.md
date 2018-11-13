@@ -1,11 +1,11 @@
 # Django Timer
-Lightweight profiling timer for django projects can be installed [via pypi](https://pypi.python.org/pypi?name=django-timer&version=0.1&:action=display)
+Lightweight profiling timer for django projects can be installed [via pypi](https://pypi.python.org/pypi?name=django-timer&version=0.1&:action=display). Compatible for all django and python projects.
 
     pip install django-timer
 
 # Examples
 
-Simplest usage 
+Simplest usage
 ```python
 with Timer() as timer:
     import time; time.sleep(1) # do something slow
@@ -20,7 +20,7 @@ If you provide a message the timer will log the message via the logger with a lo
 ```python
 with Timer('sleep 1') as timer:
     import time; time.sleep(1) # do something slow
-```    
+```
 ```
 django.log: [INFO] sleep 1 :: 1.003 secs
 ```
@@ -53,7 +53,7 @@ number_of_laps = len(timer.laps)
 average = timer.average
 slowest_lap = timer.max
 print "Total time {d:.02f} the number of iterations {n} average {avg} max {max}".format(d=delta, n=number_of_laps, avg=average, max=slowest_lap)
-```    
+```
 
 ```
 STDOUT: my loop :: 1.191 secs
@@ -65,9 +65,9 @@ STDOUT: Total time 1.19 the number of iterations 100 average 0.0115374279022 max
 
     python setup.py sdist upload -r pypi
 
-## Run tests 
+## Run tests
 
-    nosetests 
+    nosetests
 
 ## Todo:
 - Set logging to info by default as an option in settings.py
